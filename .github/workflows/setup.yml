@@ -1,0 +1,16 @@
+# file: .github/workflows/setup.yml
+name: setup
+# on – определяет события, которые запускают воркфлоу
+on: push
+jobs:
+  build:
+    # операционная система для работы воркфлоу
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: install & build
+        run: make setup
+      - name: run test
+        run: make test
+      - name: run linter
+        run: make lint
